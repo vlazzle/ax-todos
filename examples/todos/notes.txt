@@ -1,0 +1,2 @@
+html5 placeholder attribute of text fields is spoken in safari but not in chrome
+
