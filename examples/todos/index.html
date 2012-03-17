@@ -56,8 +56,8 @@
       <div class="todo <%= done ? 'done' : '' %>">
         <div class="display">
           <input class="check" type="checkbox" <%= done ? 'checked="checked"' : '' %> aria-label="completed if checked" />
-          <div class="todo-text"></div>
-          <span class="todo-destroy"></span>
+          <div class="todo-text" tabindex="0"></div>
+          <span class="todo-destroy" role="button" aria-label="destroy"></span>
         </div>
         <div class="edit">
           <input class="todo-input" type="text" value="" />
