@@ -2,9 +2,8 @@ var TodoAx = function() {
 };
 
 _.extend(TodoAx.prototype, {
-  placeholders: function() {
-    var $newTodoField = $('#new-todo');
-    this.label($newTodoField, $newTodoField.attr('placeholder'));
+  inlineLabel: function($elem, labelText) {
+    $elem.attr('aria-label', labelText);
   },
 
   label: function($elem, labelText, labelId) {
@@ -29,6 +28,21 @@ _.extend(TodoAx.prototype, {
       $('body').append(this.$labelsContainer);
     }
     return this.$labelsContainer;
+  },
+
+  placeholders: function() {
+    var $newTodoField = $('#new-todo');
+    this.label($newTodoField, $newTodoField.attr('placeholder'));
+  },
+
+  todoPronunciation: function() {
+    // TODO VO speaks h1 content instead of label
+    var $title = $('.title h1');
+    this.inlineLabel($title, 'To Dos');
+  },
+
+  todoList: function() {
+    this.label($('#todo-list'), 'tasks');
   }
 
 });
@@ -36,4 +50,6 @@ _.extend(TodoAx.prototype, {
 $(function() {
   var todoAx = new TodoAx;
   todoAx.placeholders();
+  // todoAx.todoPronunciation();
+  todoAx.todoList();
 });
