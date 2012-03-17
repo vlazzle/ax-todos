@@ -41,15 +41,14 @@ _.extend(TodoAx.prototype, {
     this.inlineLabel($title, 'To Dos');
   },
 
-  todoList: function() {
+  taskList: function() {
     this.label($('#todo-list'), 'tasks');
   }
-
 });
 
 $(function() {
   var todoAx = new TodoAx;
   todoAx.placeholders();
   // todoAx.todoPronunciation();
-  todoAx.todoList();
+  todoAx.taskList();
 });
