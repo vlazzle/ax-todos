@@ -82,7 +82,7 @@ $(function(){
     // The DOM events specific to an item.
     events: {
       "click .check"              : "toggleDone",
-      "dblclick div.todo-text"    : "edit",
+      "click div.todo-text"       : "edit",
       "click span.todo-destroy"   : "clear",
       "keypress .todo-input"      : "updateOnEnter"
     },
