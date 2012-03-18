@@ -107,7 +107,8 @@ html {
       padding: 0;
       border-bottom: 0;
     }
-  #todo-list .editing .display *,
+  #todo-list .editing .display .check,
+  #todo-list .editing .display .todo-text,
   #todo-list .edit {
     display: none;
   }
