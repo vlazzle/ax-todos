@@ -54,15 +54,10 @@ _.extend(TodoAx.prototype, {
     var $title = $('.title h1');
     this.inlineLabel($title, 'To Dos');
   },
-
-  taskList: function() {
-    this.label($('#todo-list'), 'tasks');
-  }
 });
 
 $(function() {
   var todoAx = new TodoAx;
   todoAx.placeholders();
   // todoAx.todoPronunciation();
-  todoAx.taskList();
 });
