@@ -123,9 +123,7 @@ $(function(){
 
     // Close the `"editing"` mode, saving changes to the todo.
     close: function() {
-      if (this.model.changedAttributes()) {
-        this.model.save({text: this.input.val()});
-      }
+      this.model.save({text: this.input.val()});
       $(this.el).removeClass("editing");
     },
 
