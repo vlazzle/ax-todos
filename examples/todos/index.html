@@ -26,8 +26,8 @@
       <div class="content">
 
         <div id="create-todo" aria-atomic="false" aria-live="polite" aria-relevant="additions">
-          <input id="new-todo" placeholder="What needs to be done?" type="text" />
-          <span class="ui-tooltip-top" style="display:none;">Press Enter to save this task</span>
+          <input id="new-todo" placeholder="What needs to be done?" type="text" aria-describedby="tooltip" />
+          <span id="tooltip" class="ui-tooltip-top" style="display:none;" role="tooltip">Press Enter to save this task</span>
         </div>
 
         <div id="todos">
