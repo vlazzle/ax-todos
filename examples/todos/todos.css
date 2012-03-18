@@ -258,8 +258,9 @@ html {
   filter:progid:DXImageTransform.Microsoft.gradient(startColorStr=#555555,EndColorStr=#222222);
   -ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorStr=#555555,EndColorStr=#222222);
 }
+
 .ui-tooltip:after, .ui-tooltip-top:after, .ui-tooltip-right:after, .ui-tooltip-bottom:after, .ui-tooltip-left:after {
-  content:"\25B8";
+  /*content:"\25B8";*/
   display:block;
   font-size:2em;
   height:0;
