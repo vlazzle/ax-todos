@@ -164,6 +164,7 @@ $(function(){
     events: {
       "keypress #new-todo":  "createOnEnter",
       "keyup #new-todo":     "showTooltip",
+      "blur #new-todo":      "hideTooltip",
       "click .todo-clear a": "clearCompleted"
     },
 
@@ -228,12 +229,24 @@ $(function(){
     // a new todo item, after one second.
     showTooltip: function(e) {
       var tooltip = this.$(".ui-tooltip-top");
+      tooltip.hide();
+
+      if (17 === e.keyCode || 18 == e.keyCode) {
+        // ignore VO keys
+        return;
+      }
+
       var val = this.input.val();
-      tooltip.fadeOut();
       if (this.tooltipTimeout) clearTimeout(this.tooltipTimeout);
       if (val == '' || val == this.input.attr('placeholder')) return;
       var show = function(){ tooltip.show().fadeIn(); };
       this.tooltipTimeout = _.delay(show, 1000);
+    },
+
+    hideTooltip: function() {
+       var tooltip = this.$('.ui-tooltip-top');
+       if (this.tooltipTimeout) clearTimeout(this.tooltipTimeout);
+       tooltip.hide();
     }
 
   });
