@@ -172,10 +172,10 @@ $(function(){
     initialize: function() {
       this.input    = this.$("#new-todo");
 
-      Todos.bind('add',   this.addOne, this);
-      Todos.bind('reset', this.addAll, this);
-      Todos.bind('all',   this.render, this);
-      Todos.bind('reset', this.notBusy, this);
+      Todos.bind('add',    this.addOne, this);
+      Todos.bind('reset',  this.addAll, this);
+      Todos.bind('change', this.render, this);
+      Todos.bind('reset',  this.notBusy, this);
 
       Todos.fetch();
     },
