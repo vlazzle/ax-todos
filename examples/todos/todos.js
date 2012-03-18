@@ -154,8 +154,9 @@ $(function(){
     // the App already present in the HTML.
     el: $("#todoapp"),
 
-    // Our template for the line of statistics at the bottom of the app.
-    statsTemplate: _.template($('#stats-template').html()),
+    // Our templates for the line of statistics at the bottom of the app.
+    statsCountTemplate: _.template($('#stats-count-template').html()),
+    statsClearTemplate: _.template($('#stats-clear-template').html()),
 
     // Delegated events for creating new items, and clearing completed ones.
     events: {
@@ -180,10 +181,17 @@ $(function(){
     // Re-rendering the App just means refreshing the statistics -- the rest
     // of the app doesn't change.
     render: function() {
-      this.$('#todo-stats').html(this.statsTemplate({
-        total:      Todos.length,
-        done:       Todos.done().length,
-        remaining:  Todos.remaining().length
+      var total     = Todos.length
+        , done      = Todos.done().length
+        , remaining = Todos.remaining().length
+
+      this.$('#todo-stats-count').html(this.statsCountTemplate({
+        total: total,
+        remaining: remaining
+      }));
+
+      this.$('#todo-stats-clear').html(this.statsClearTemplate({
+        done: done
       }));
     },
 

@@ -34,7 +34,10 @@
           <ul id="todo-list"></ul>
         </div>
 
-        <div id="todo-stats" aria-atomic="true" aria-live="polite" aria-relevant="additions"></div>
+        <div id="todo-stats">
+          <div id="todo-stats-count" aria-atomic="true" aria-live="polite" aria-relevant="additions"></div>
+          <div id="todo-stats-clear"></div>
+        </div>
 
       </div>
 
@@ -65,13 +68,16 @@
       </div>
     </script>
 
-    <script type="text/template" id="stats-template">
+    <script type="text/template" id="stats-count-template">
       <% if (total) { %>
         <span class="todo-count">
           <span class="number"><%= remaining %></span>
           <span class="word"><%= remaining == 1 ? 'item' : 'items' %></span> left.
         </span>
       <% } %>
+    </script>
+
+    <script type="text/template" id="stats-clear-template">
       <% if (done) { %>
         <span class="todo-clear">
           <a href="#">
