@@ -177,8 +177,13 @@ $(function(){
       Todos.bind('add',   this.addOne, this);
       Todos.bind('reset', this.addAll, this);
       Todos.bind('all',   this.render, this);
+      Todos.bind('reset', this.notBusy, this);
 
       Todos.fetch();
+    },
+
+    notBusy: function() {
+      this.$el.attr('aria-busy', false);
     },
 
     // Re-rendering the App just means refreshing the statistics -- the rest
