@@ -84,7 +84,17 @@ $(function(){
       "click .check"              : "toggleDone",
       "click div.todo-text"       : "edit",
       "click span.todo-destroy"   : "clear",
+      "focus span.todo-destroy"   : "showDestroy",
+      "blur span.todo-destroy"    : "hideDestroy",
       "keypress .todo-input"      : "updateOnEnter"
+    },
+
+    showDestroy: function() {
+      this.$('span.todo-destroy').show();
+    },
+
+    hideDestroy: function() {
+      this.$('span.todo-destroy').hide();
     },
 
     // The TodoView listens for changes to its model, re-rendering.
@@ -95,7 +105,7 @@ $(function(){
 
     // Re-render the contents of the todo item.
     render: function() {
-      $(this.el).html(this.template(this.model.toJSON()));
+      this.$el.html(this.template(this.model.toJSON()));
       this.setText();
       return this;
     },
@@ -119,12 +129,14 @@ $(function(){
     edit: function() {
       $(this.el).addClass("editing");
       this.input.focus();
+      this.showDestroy();
     },
 
     // Close the `"editing"` mode, saving changes to the todo.
     close: function() {
       this.model.save({text: this.input.val()});
       $(this.el).removeClass("editing");
+      this.hideDestroy();
     },
 
     // If you hit `enter`, we're through editing the item.

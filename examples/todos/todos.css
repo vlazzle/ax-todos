@@ -157,10 +157,6 @@ html {
       background-position: 0 -20px;
     }
 
-    #todo-list li.editing .todo-destroy {
-      display: block;
-    }
-
 #todo-stats {
   *zoom: 1;
   margin-top: 10px;
