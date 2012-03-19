@@ -106,6 +106,9 @@ $(function(){
     // Re-render the contents of the todo item.
     render: function() {
       this.$el.html(this.template(this.model.toJSON()));
+      this.$el.attr({
+        'aria-describedby': this.getDomId('task-text-')
+      });
       this.setText();
       return this;
     },
@@ -114,7 +117,9 @@ $(function(){
     // we use `jQuery.text` to set the contents of the todo item.
     setText: function() {
       var text = this.model.get('text');
-      this.$('.todo-text').text(text);
+      this.$('.todo-text').text(text).attr({
+        id: this.getDomId('task-text-')
+      });
       this.input = this.$('.todo-input');
       this.input.bind('blur', _.bind(this.close, this)).val(text);
     },
@@ -152,6 +157,10 @@ $(function(){
     // Remove the item, destroy the model.
     clear: function() {
       this.model.destroy();
+    },
+
+    getDomId: function(prefix) {
+      return prefix + this.model.cid;
     }
 
   });
@@ -184,10 +193,12 @@ $(function(){
     initialize: function() {
       this.input    = this.$("#new-todo");
 
-      Todos.bind('add',    this.addOne, this);
-      Todos.bind('reset',  this.addAll, this);
-      Todos.bind('change', this.render, this);
-      Todos.bind('reset',  this.notBusy, this);
+      Todos.bind('add',         this.addOne, this);
+      Todos.bind('reset',       this.addAll, this);
+      Todos.bind('change:done', this.render, this);
+      Todos.bind('remove',      this.render, this);
+      Todos.bind('reset',       this.render, this);
+      Todos.bind('reset',       this.notBusy, this);
 
       Todos.fetch();
     },
