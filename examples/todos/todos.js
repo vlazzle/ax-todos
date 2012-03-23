@@ -81,6 +81,7 @@ $(function(){
 
     // The DOM events specific to an item.
     events: {
+      "click"                     : "toggleDoneFromTop",
       "click .check"              : "toggleDone",
       "click div.todo-text"       : "edit",
       "click span.todo-destroy"   : "clear",
@@ -128,6 +129,11 @@ $(function(){
     toggleDone: function() {
       this.model.toggle();
       this.$('.check').focus();
+    },
+
+    toggleDoneFromTop: function(e) {
+      var $target = $(e.target);
+      $target.is('li') && this.toggleDone();
     },
 
     // Switch this view into `"editing"` mode, displaying the input field.
