@@ -48,16 +48,9 @@ _.extend(TodoAx.prototype, {
       this.label($newTodoField, $newTodoField.attr('placeholder'));
     }
   },
-
-  todoPronunciation: function() {
-    // TODO VO speaks h1 content instead of label
-    var $title = $('.title h1');
-    this.inlineLabel($title, 'To Dos');
-  },
 });
 
 $(function() {
-  var todoAx = new TodoAx;
+  window.todoAx = new TodoAx;
   todoAx.placeholders();
-  // todoAx.todoPronunciation();
 });
